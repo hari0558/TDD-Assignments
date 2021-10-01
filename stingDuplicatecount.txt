@@ -1,0 +1,44 @@
+------------------------class duplicateString----------------
+package com.yash.TDD;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class TestClass {
+
+	public int findDuplicatesInString(String str) {
+		int count=0;
+		if(str.equals(null)) {
+			throw new NullPointerException();
+		}
+		String[] arr=str.split(" ");
+		Set<String> s=new TreeSet<String>();
+		for(int i=0;i<arr.length;i++) {
+			if(s.add(arr[i])==false){
+				count=count+1;
+			}
+		}
+	
+		return count;
+	}
+}
+---------------------------JUnitTest--------------------------
+package com.yash.TDD;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class StringTest {
+
+	@Test
+	public void test() {
+	 TestClass tests=new TestClass();
+	 String str="java is Object oriented and java is simple";
+	 int expected=2;
+	 int actual=tests.findDuplicatesInString(str);
+	 assertEquals(expected,actual);
+	 
+	}
+
+}
